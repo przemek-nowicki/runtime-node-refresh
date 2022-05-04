@@ -1,4 +1,4 @@
-# RnR (runtime-node-refresh)
+# RnR - runtime-node-refresh
 
 **RnR** - is tiny lib to refresh node setup on runtime without restarting the node server.
 
