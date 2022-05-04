@@ -1,0 +1,30 @@
+{
+  "name": "runtime-node-refresh",
+  "version": "1.0.0",
+  "description": "Refresh node environment variables on runtime without restarting the node server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/przemek-nowicki/runtime-node-refresh.git"
+  },
+  "keywords": [
+    "refresh",
+    "env",
+    "update",
+    "env",
+    "runtime",
+    "refresh",
+    "node",
+    "refresh",
+    "envs"
+  ],
+  "author": "nowicki.przemek@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/przemek-nowicki/runtime-node-refresh/issues"
+  },
+  "homepage": "https://github.com/przemek-nowicki/runtime-node-refresh#readme"
+}
