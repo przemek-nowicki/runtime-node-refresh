@@ -1,40 +1,37 @@
-  'use strict';
+'use strict';
 
-  const fs = require('fs');
-  const path = require('path');
-  const os = require('os');
+var config = require('./config');
+var storage = require('./storage');
 
-  let cbToCall;
-  const process = global.process
+var cbToCall;
+var process = global.process;
 
-  const isProcessOk =  (process) => {
-    return process &&
-      typeof process === 'object' &&
-      typeof process.kill === 'function' &&
-      typeof process.pid === 'number' &&
-      typeof process.on === 'function'
-  }
+function isProcessOk(process) {
+  return process &&
+    typeof process === 'object' &&
+    typeof process.kill === 'function' &&
+    typeof process.pid === 'number' &&
+    typeof process.on === 'function'
+}
 
-  const reloadCbFn = (cb) => {
-    cbToCall = cb;
-    fs.writeFile(path.join(os.tmpdir(), 'rnr.pid'), process.pid.toString(), function (err) {
-      if (err) return console.log(err);
-      console.log('rnr.pid saved successfully');
-    });
-  };
+function reloadCbFn(cb) {
+  cbToCall = cb;
+  storage.write(process.pid.toString());
+};
 
-  process.on('SIGPIPE', () => {
-    if (typeof cbToCall === 'function') {
-      cbToCall();  
-    } else {
-      console.error('SIGPIPE triggered but no callback provided to execute!');
-    }
-  });
-
-  if (!isProcessOk(process)) {
-    module.exports = () => {
-      return () => {}
-    }
+process.on(config.SIGNAL_EVENT, function() {
+  if (typeof cbToCall === 'function') {
+    cbToCall();  
   } else {
-    module.exports = reloadCbFn;
+    console.error('SIGPIPE triggered but no callback provided to execute');
   }
+});
+
+if (!isProcessOk(process)) {
+  console.error('Invalid nodejs process object detected')
+  module.exports = function () {
+    return function () {}
+  }
+} else {
+  module.exports = reloadCbFn;
+}

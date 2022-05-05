@@ -2,20 +2,18 @@
 
 "use strict";
 
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+var config = require('../config')
+var storage = require('../storage');
 
-var args = process.argv[2];
+var data = storage.read();
+var pid = parseInt(data);
 
-fs.readFile(path.join(os.tmpdir(), 'rnr.pid'), 'utf8', function (err,data) {
-  if (err) {
-    return console.log(err);
+if (pid > 0) {
+  try {
+    process.kill(pid, config.SIGNAL_EVENT);
+  } catch(e) {
+    console.error('Could not connect to PID ' + pid);
   }
-  const pid = parseInt(data);
-  if (pid > 0) {
-    process.kill(pid, "SIGPIPE");
-  } else {
-    console.error('pid not found in the storage');
-  }
-});
+} else {
+  console.error('pid not found in the storage');
+}
