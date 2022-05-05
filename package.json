@@ -1,6 +1,6 @@
 {
   "name": "runtime-node-refresh",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "bin": "./bin/rnr.js",
   "description": "Refresh node environment variables on runtime without restarting the node server.",
   "main": "index.js",
@@ -12,15 +12,12 @@
     "url": "git+https://github.com/przemek-nowicki/runtime-node-refresh.git"
   },
   "keywords": [
-    "refresh",
-    "env",
-    "update",
-    "env",
-    "runtime",
-    "refresh",
-    "node",
-    "refresh",
-    "envs"
+    "refresh envs",
+    "update env",
+    "runtime node refresh",
+    "changing log level at runtime",
+    "update env",
+    "update node envs"
   ],
   "author": "nowicki.przemek@gmail.com",
   "license": "ISC",
