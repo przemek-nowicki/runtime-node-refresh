@@ -1,6 +1,6 @@
 {
   "name": "runtime-node-refresh",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "bin": "./bin/rnr.js",
   "description": "Refresh node environment variables on runtime without restarting the node server.",
   "main": "index.js",
@@ -15,6 +15,7 @@
     "refresh envs",
     "update env",
     "runtime node refresh",
+    "change node envs",
     "changing log level at runtime",
     "update env",
     "update node envs"

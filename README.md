@@ -10,7 +10,7 @@ npm install --save runtime-node-refresh
 
 # Usage
  
-Following you will find example of simple project created via `npm` which uses `runtime-node-refresh` to refresh environment variable without running the node script again. The message to update environment variable came from other node process.
+Following you will find example of simple project created via `npm` which uses `runtime-node-refresh` to refresh environment variable without running the node script again. Notice that the message to update environment variable came from other node process.
 
 Create `index.js` file and add the following code:
 
@@ -35,7 +35,7 @@ Create `package.json' file and fill it with the following:
       "refresh": "runtime-node-refresh"
     },
     "dependencies": {
-      "runtime-node-refresh": "^1.0.3"
+      "runtime-node-refresh": "^1.0.6"
     }
   }
 ```
@@ -60,4 +60,7 @@ It may be very usefult when you want to restart/update environment variable on r
 The real life example of `RnR` lib usage can be find in the following express based web-application:
 https://github.com/przemek-nowicki/node-express-template.ts/blob/master/src/server.ts
 
-Note: RnR is using node signals which means it does not work on Worker threads.
+**Note:** RnR is using node signals which means it does not work on Worker threads.
+It uses SIGPIPE signal to communicate between nodejs processes.
+By default the SIGPIPE is ignored by NodeJS. 
+However it is recommend to check if you don't have a listener installed on SIGPIPE in your project before you use `rnr` library.
