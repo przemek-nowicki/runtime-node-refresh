@@ -58,9 +58,9 @@ Back to first termiinal and see if the LOG_LEVEL variable value changed to debug
 
 It may be very usefult when you want to restart/update environment variable on running node application without restarting the node server.
 The real life example of `RnR` lib usage can be find in the following express based web-application:
-https://github.com/przemek-nowicki/node-express-template.ts/blob/master/src/server.ts
+https://github.com/przemek-nowicki/node-express-template.ts/blob/master/src/core/utils/logger.ts#L2
 
 **Note:** RnR is using node signals which means it does not work on Worker threads.
 It uses SIGPIPE signal to communicate between nodejs processes.
 By default the SIGPIPE is ignored by NodeJS. 
-However it is recommend to check if you don't have a listener installed on SIGPIPE in your project before you use `rnr` library.
+However it is recommend to check if you don't have a listener installed on SIGPIPE in your project before you use `RnR` library.
